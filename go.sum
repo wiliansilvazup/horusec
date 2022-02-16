@@ -93,8 +93,6 @@ github.com/PuerkitoBio/urlesc v0.0.0-20170810143723-de5bf2ad4578/go.mod h1:uGdko
 github.com/Shopify/logrus-bugsnag v0.0.0-20171204204709-577dee27f20d/go.mod h1:HI8ITrYtUY+O+ZhtlqUnD8+KwNPOyugEhfP9fdUIaEQ=
 github.com/ZupIT/horusec-devkit v1.0.22 h1:RW7ZzZWEOdFqlCN6ZBYzSg0UMtOnaaZQ95iaLCqn+1g=
 github.com/ZupIT/horusec-devkit v1.0.22/go.mod h1:QiWTanEkeMikccopaW1ZG/ie74ODZekOUu2i8kgkARo=
-github.com/ZupIT/horusec-engine v1.0.0 h1:Mu0wrlK1L7n1+nv/vzeDc8AD0HOgavgK8X5N4qHwJSA=
-github.com/ZupIT/horusec-engine v1.0.0/go.mod h1:UCehiH9hiNYX2jDVdB8Anxv44Rz4BOFTKov2kyPAgK8=
 github.com/agiledragon/gomonkey/v2 v2.3.1/go.mod h1:ap1AmDzcVOAz1YpeJ3TCzIgstoaWLA6jbbgxfB4w2iY=
 github.com/alecthomas/template v0.0.0-20160405071501-a0175ee3bccc/go.mod h1:LOuyumcjzFXgccqObfd/Ljyb9UuFJ6TxHnclSeseNhc=
 github.com/alecthomas/template v0.0.0-20190718012654-fb15b899a751/go.mod h1:LOuyumcjzFXgccqObfd/Ljyb9UuFJ6TxHnclSeseNhc=
@@ -647,6 +645,8 @@ github.com/mailru/easyjson v0.7.7/go.mod h1:xzfreul335JAWq5oZzymOObrkdz5UnU4kGfJ
 github.com/manifoldco/promptui v0.9.0 h1:3V4HzJk1TtXW1MTZMP7mdlwbBpIinw3HztaIlYthEiA=
 github.com/manifoldco/promptui v0.9.0/go.mod h1:ka04sppxSGFAtxX0qhlYQjISsg9mR4GWtQEhdbn6Pgg=
 github.com/marstr/guid v1.1.0/go.mod h1:74gB1z2wpxxInTG6yaqA7KrtM0NZ+RbrcqDvYHefzho=
+github.com/matheusalcantarazup/horusec-engine v1.0.1-0.20220215174916-b1aa2d64eb35 h1:AhqbV3fHOAnco1ccuwB6wsE6mSIdUhXEpWkUeqW/kJU=
+github.com/matheusalcantarazup/horusec-engine v1.0.1-0.20220215174916-b1aa2d64eb35/go.mod h1:tsBfhpJ7j3A5hS9z0zLkb+o2+TISL3jMJFsKlP66LRM=
 github.com/mattn/go-colorable v0.0.9/go.mod h1:9vuHe8Xs5qXnSaW/c/ABM9alt+Vo+STaOChaDxuIBZU=
 github.com/mattn/go-colorable v0.1.1/go.mod h1:FuOcm+DKB9mbwrcAfNl7/TZVBZ6rcnceauSikq3lYCQ=
 github.com/mattn/go-colorable v0.1.2/go.mod h1:U0ppj6V5qS13XJ6of8GYAs25YV2eR4EVcfRqFIhoBtE=
@@ -846,6 +846,8 @@ github.com/sirupsen/logrus v1.6.0/go.mod h1:7uNnSEd1DgxDLC74fIahvMZmmYsHGZGEOFrf
 github.com/sirupsen/logrus v1.7.0/go.mod h1:yWOB1SBYBC5VeMP7gHvWumXLIWorT60ONWic61uBYv0=
 github.com/sirupsen/logrus v1.8.1 h1:dJKuHgqk1NNQlqoA6BTlM1Wf9DOH3NBjQyu0h9+AZZE=
 github.com/sirupsen/logrus v1.8.1/go.mod h1:yWOB1SBYBC5VeMP7gHvWumXLIWorT60ONWic61uBYv0=
+github.com/smacker/go-tree-sitter v0.0.0-20211116060328-db7fde9b5e82 h1:e17/Q2AF05ZITfj9y/dqOU+ceEXOeYzKGGuIXNsDlxM=
+github.com/smacker/go-tree-sitter v0.0.0-20211116060328-db7fde9b5e82/go.mod h1:EiUuVMUfLQj8Sul+S8aKWJwQy7FRYnJCO2EWzf8F5hk=
 github.com/smartystreets/assertions v0.0.0-20180927180507-b2de0cb4f26d/go.mod h1:OnSkiWE9lh6wB0YB77sQom3nweQdgAjqCqsofrRNTgc=
 github.com/smartystreets/assertions v1.1.0/go.mod h1:tcbTF8ujkAEcZ8TElKY+i30BzYlVhC/LOxJk7iOWnoo=
 github.com/smartystreets/goconvey v0.0.0-20190330032615-68dc04aab96a/go.mod h1:syvi0/a8iFYH4r/RixwvyeAJjdLS9QV7WQ/tjFTllLA=
