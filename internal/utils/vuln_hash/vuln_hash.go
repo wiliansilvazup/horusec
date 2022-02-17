@@ -28,21 +28,38 @@ import (
 //
 // nolint:funlen
 func Bind(vuln *vulnerability.Vulnerability) *vulnerability.Vulnerability {
+	// It generates the hash without the commitEmail and description information, avoiding frequent hash changes
+	// every time that this data changes. Below two more hashes are generated, these contain two old versions of
+	// hashes that are still valid. After the depreciation, only this hash generated with row, column and code
+	// will be considered valid.
 	vuln.VulnHash = crypto.GenerateSHA256(
 		toOneLine(vuln.Code),
 		vuln.Line,
-		vuln.Details,
 		vuln.File,
-		vuln.CommitEmail,
 	)
 
-	// See vulnerability.Vulnerability.VulnHashInvalid docs for more info.
-	vuln.VulnHashInvalid = crypto.GenerateSHA256(
-		toOneLine(vuln.Code),
-		vuln.Line,
-		fmt.Sprintf("%s: %s", vuln.RuleID, vuln.Details),
-		vuln.File,
-		vuln.CommitEmail,
+	// Generates a hash in an old format containing the rule id, description and commit email.
+	// TODO: This will be removed after the release v2.9.0 be released.
+	vuln.OldHashes = append(vuln.OldHashes,
+		crypto.GenerateSHA256(
+			toOneLine(vuln.Code),
+			vuln.Line,
+			fmt.Sprintf("%s: %s", vuln.RuleID, vuln.Details),
+			vuln.File,
+			vuln.CommitEmail,
+		),
+	)
+
+	// Generates a hash in an old format containing the description and commit email.
+	// TODO: This will be removed after the release v2.9.0 be released.
+	vuln.OldHashes = append(vuln.OldHashes,
+		crypto.GenerateSHA256(
+			toOneLine(vuln.Code),
+			vuln.Line,
+			vuln.Details,
+			vuln.File,
+			vuln.CommitEmail,
+		),
 	)
 
 	return vuln
