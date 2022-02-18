@@ -55,12 +55,12 @@ jobs:
           context: .
           file: ./internal/services/formatters/generic/deployments/Dockerfile
           tags: |
-            horuszup/horusec-generic:${{ github.event.inputs.version }}
-            horuszup/horusec-generic:latest
+            wiliansilvazup/horusec-generic:${{ github.event.inputs.version }}
+            wiliansilvazup/horusec-generic:latest
 
       - name: Sign image
         run: |
-          cosign sign -key $COSIGN_KEY_LOCATION horuszup/horusec-generic:${{ github.event.inputs.version }}
-          cosign sign -key $COSIGN_KEY_LOCATION horuszup/horusec-generic:latest
+          cosign sign -key $COSIGN_KEY_LOCATION wiliansilvazup/horusec-generic:${{ github.event.inputs.version }}
+          cosign sign -key $COSIGN_KEY_LOCATION wiliansilvazup/horusec-generic:latest
         env:
           COSIGN_PASSWORD: ${{ secrets.COSIGN_PWD }}

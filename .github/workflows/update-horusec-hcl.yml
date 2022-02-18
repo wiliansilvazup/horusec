@@ -55,12 +55,12 @@ jobs:
           context: .
           file: ./internal/services/formatters/hcl/deployments/Dockerfile
           tags: |
-            horuszup/horusec-hcl:${{ github.event.inputs.version }}
-            horuszup/horusec-hcl:latest
+            wiliansilvazup/horusec-hcl:${{ github.event.inputs.version }}
+            wiliansilvazup/horusec-hcl:latest
 
       - name: Sign image
         run: |
-          cosign sign -key $COSIGN_KEY_LOCATION horuszup/horusec-hcl:${{ github.event.inputs.version }}
-          cosign sign -key $COSIGN_KEY_LOCATION horuszup/horusec-hcl:latest
+          cosign sign -key $COSIGN_KEY_LOCATION wiliansilvazup/horusec-hcl:${{ github.event.inputs.version }}
+          cosign sign -key $COSIGN_KEY_LOCATION wiliansilvazup/horusec-hcl:latest
         env:
           COSIGN_PASSWORD: ${{ secrets.COSIGN_PWD }}

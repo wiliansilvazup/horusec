@@ -55,12 +55,12 @@ jobs:
           context: .
           file: ./internal/services/formatters/csharp/deployments/Dockerfile
           tags: |
-            horuszup/horusec-csharp:${{ github.event.inputs.version }}
-            horuszup/horusec-csharp:latest
+            wiliansilvazup/horusec-csharp:${{ github.event.inputs.version }}
+            wiliansilvazup/horusec-csharp:latest
 
       - name: Sign image
         run: |
-          cosign sign -key $COSIGN_KEY_LOCATION horuszup/horusec-csharp:${{ github.event.inputs.version }}
-          cosign sign -key $COSIGN_KEY_LOCATION horuszup/horusec-csharp:latest
+          cosign sign -key $COSIGN_KEY_LOCATION wiliansilvazup/horusec-csharp:${{ github.event.inputs.version }}
+          cosign sign -key $COSIGN_KEY_LOCATION wiliansilvazup/horusec-csharp:latest
         env:
           COSIGN_PASSWORD: ${{ secrets.COSIGN_PWD }}

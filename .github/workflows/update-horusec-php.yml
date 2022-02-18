@@ -55,12 +55,12 @@ jobs:
           context: .
           file: ./internal/services/formatters/php/deployments/Dockerfile
           tags: |
-            horuszup/horusec-php:${{ github.event.inputs.version }}
-            horuszup/horusec-php:latest
+            wiliansilvazup/horusec-php:${{ github.event.inputs.version }}
+            wiliansilvazup/horusec-php:latest
 
       - name: Sign image
         run: |
-          cosign sign -key $COSIGN_KEY_LOCATION horuszup/horusec-php:${{ github.event.inputs.version }}
-          cosign sign -key $COSIGN_KEY_LOCATION horuszup/horusec-php:latest
+          cosign sign -key $COSIGN_KEY_LOCATION wiliansilvazup/horusec-php:${{ github.event.inputs.version }}
+          cosign sign -key $COSIGN_KEY_LOCATION wiliansilvazup/horusec-php:latest
         env:
           COSIGN_PASSWORD: ${{ secrets.COSIGN_PWD }}

@@ -55,12 +55,12 @@ jobs:
           context: .
           file: ./internal/services/formatters/elixir/deployments/Dockerfile
           tags: |
-            horuszup/horusec-elixir:${{ github.event.inputs.version }}
-            horuszup/horusec-elixir:latest
+            wiliansilvazup/horusec-elixir:${{ github.event.inputs.version }}
+            wiliansilvazup/horusec-elixir:latest
 
       - name: Sign image
         run: |
-          cosign sign -key $COSIGN_KEY_LOCATION horuszup/horusec-elixir:${{ github.event.inputs.version }}
-          cosign sign -key $COSIGN_KEY_LOCATION horuszup/horusec-elixir:latest
+          cosign sign -key $COSIGN_KEY_LOCATION wiliansilvazup/horusec-elixir:${{ github.event.inputs.version }}
+          cosign sign -key $COSIGN_KEY_LOCATION wiliansilvazup/horusec-elixir:latest
         env:
           COSIGN_PASSWORD: ${{ secrets.COSIGN_PWD }}

@@ -30,7 +30,7 @@ builds:
     goarch:
       - amd64
       - arm64
-      - 386
+      - "386"
     binary: horusec_{{ replace (replace .Os "windows" "win") "darwin" "mac" }}_{{ replace .Arch "386" "x86" }}
   - id: horusec-standalone
     env: [ CGO_ENABLED=0 ]
@@ -48,10 +48,30 @@ builds:
     goarch:
       - amd64
       - arm64
-      - 386
+      - "386"
     binary: horusec_{{ replace (replace .Os "windows" "win") "darwin" "mac" }}_{{ replace .Arch "386" "x86" }}_stand_alone
 changelog:
-  skip: true
+  skip: false
+  use: github
+  groups:
+  - title: 'Features'
+    regexp: "^.*:(feature|feat)\\s-.*$"
+    order: 0
+  - title: 'Bug fixes'
+    regexp: "^.*:(bugfix|fix)\\s-.*$"
+    order: 1
+  - title: 'Hotfixes'
+    regexp: "^.*:hotfix\\s-.*$"
+    order: 2
+  - title: 'Chores'
+    regexp: "^.*:chore\\s-.*$"
+    order: 3
+  - title: Others
+    order: 999
+  filters:
+    exclude:
+      - '^deps:chore.*$'
+      - '^build(deps):.*$'
 snapshot:
   name_template: '{{ incpatch .Tag }}'
 archives:
@@ -80,7 +100,13 @@ archives:
 checksum:
   name_template: 'checksums.txt'
 release:
-  draft: true
+  draft: false
+  mode: append
+  footer: |
+    ## Docker images
+    - `docker pull wiliansilvazup/horusec-cli:{{ .Tag }}`
+
+    **Full Changelog**: https://github.com/ZupIT/horusec/compare/{{ .PreviousTag }}...{{ .Tag }}
   extra_files:
     - glob: deployments/cosign.pub
 nfpms:
@@ -119,8 +145,8 @@ docker_signs:
     stdin: '{{ .Env.COSIGN_PWD }}'
 dockers:
   - image_templates:
-      - 'horuszup/horusec-cli:{{ .Tag }}-amd64'
-    skip_push: false
+      - 'wiliansilvazup/horusec-cli:{{ .Tag }}-amd64'
+    skip_push: "false"
     goos: linux
     goarch: amd64
     dockerfile: ./deployments/Dockerfile-gorelease-amd64
@@ -135,8 +161,8 @@ dockers:
     push_flags:
       - --tls-verify=false
   - image_templates:
-      - 'horuszup/horusec-cli:{{ .Tag }}-arm64'
-    skip_push: false
+      - 'wiliansilvazup/horusec-cli:{{ .Tag }}-arm64'
+    skip_push: "false"
     goos: linux
     goarch: arm64
     dockerfile: ./deployments/Dockerfile-gorelease-arm64
@@ -152,22 +178,22 @@ dockers:
       - --tls-verify=false
 docker_manifests:
 
-  - name_template: 'horuszup/horusec-cli:{{ .Tag }}'
+  - name_template: 'wiliansilvazup/horusec-cli:{{ .Tag }}'
     image_templates:
-      - 'horuszup/horusec-cli:{{ .Tag }}-amd64'
-      - 'horuszup/horusec-cli:{{ .Tag }}-arm64'
-  - name_template: 'horuszup/horusec-cli:latest'
+      - 'wiliansilvazup/horusec-cli:{{ .Tag }}-amd64'
+      - 'wiliansilvazup/horusec-cli:{{ .Tag }}-arm64'
+  - name_template: 'wiliansilvazup/horusec-cli:latest'
     image_templates:
-      - 'horuszup/horusec-cli:{{ .Tag }}-amd64'
-      - 'horuszup/horusec-cli:{{ .Tag }}-arm64'
+      - 'wiliansilvazup/horusec-cli:{{ .Tag }}-amd64'
+      - 'wiliansilvazup/horusec-cli:{{ .Tag }}-arm64'
     skip_push: auto
-  - name_template: 'horuszup/horusec-cli:v{{ .Major }}'
+  - name_template: 'wiliansilvazup/horusec-cli:v{{ .Major }}'
     image_templates:
-      - 'horuszup/horusec-cli:{{ .Tag }}-amd64'
-      - 'horuszup/horusec-cli:{{ .Tag }}-arm64'
+      - 'wiliansilvazup/horusec-cli:{{ .Tag }}-amd64'
+      - 'wiliansilvazup/horusec-cli:{{ .Tag }}-arm64'
     skip_push: auto
-  - name_template: 'horuszup/horusec-cli:v{{ .Major }}.{{ .Minor }}'
+  - name_template: 'wiliansilvazup/horusec-cli:v{{ .Major }}.{{ .Minor }}'
     image_templates:
-      - 'horuszup/horusec-cli:{{ .Tag }}-amd64'
-      - 'horuszup/horusec-cli:{{ .Tag }}-arm64'
+      - 'wiliansilvazup/horusec-cli:{{ .Tag }}-amd64'
+      - 'wiliansilvazup/horusec-cli:{{ .Tag }}-arm64'
     skip_push: auto
